@@ -26,8 +26,8 @@ if __name__ == '__main__':
             # 去除已关闭功能
             if item['issueStatus'] != '已关闭':
                 nextTasks.insert(0, item)
-        # 本周任务 task结束日期 >= 本周初
-        elif formatDate(endDate) > formatDate(DATE[0]):
+        # 本周任务 task结束日期 >= 本周初 && task开始日期 <= 本周末
+        if formatDate(endDate) >= formatDate(DATE[0]) and formatDate(startDate) <= formatDate(DATE[1]):
             curTasks.insert(0, item)
     print('数据获取完成开始写入')
     create(curTasks = curTasks, nextTasks = nextTasks)
